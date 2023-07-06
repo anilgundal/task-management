@@ -1,5 +1,5 @@
-import { TaskStatus } from "../tasks.model";
 import { IsEnum, IsOptional, IsString } from "class-validator";
+import { TaskStatus } from "../tasks-status.enum";
 
 // ? olması optional olduğunu belirtir.
 // Birinden biri gönderilirse de çalışacaktır
