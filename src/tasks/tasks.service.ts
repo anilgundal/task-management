@@ -3,6 +3,7 @@ import { TasksRepository } from "./tasks.repository";
 import { Task } from "./task.entity";
 import { CreateTaskDto } from "./dto/create-task.dto";
 import { TaskStatus } from "./tasks-status.enum";
+import { GetTasksFilterDto } from "./dto/get-tasks-filter.dto";
 
 // import { TaskStatus } from "./tasks-status.enum";
 // import { CreateTaskDto } from "./dto/create-task.dto";
@@ -17,30 +18,21 @@ export class TasksService {
     if (!found) throw new NotFoundException(`Task with ID "${id}" not found!`);
     return found;
   }
-  // getTaskById(id: string) {
-  //   // try to get task
-  //   const found = this.tasks.find(task => task.id === id);
-  //
-  //   // if not found, throw an error (404 not found)
-  //   if (!found) {
-  //     throw new NotFoundException(`Task with "${id}" not found!`);
-  //   }
-  //   //otherwise return the found task
-  //   return found;
-  // }
-
+  async getTasks(filterDto: GetTasksFilterDto): Promise<Task[]> {
+    return this.tasksRepository.getTasks(filterDto);
+  }
   async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
     return this.tasksRepository.createTask(createTaskDto);
   }
+  async deleteTask(id: string): Promise<void> {
+    const result = await this.tasksRepository.delete(id);
+    if (result.affected === 0) throw new NotFoundException(`Task with "${id}" not founded`);
+  }
 
-  // updateTaskStatus(id: string, status: TaskStatus) {
-  //   const task = this.getTaskById(id);
-  //   task.status = status;
-  //   return task;
-  // }
-  //
-  // deleteTask(id: string): void {
-  //   const found = this.getTaskById(id);
-  //   this.tasks = this.tasks.filter(task => task.id !== found.id);
-  // }
+  async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
+    const task = await this.getTaskById(id);
+    task.status = status;
+    await this.tasksRepository.save(task);
+    return task;
+  }
 }

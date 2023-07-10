@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { TasksController } from "./tasks/tasks.controller";
 import { TasksModule } from "./tasks/tasks.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
       autoLoadEntities: true, // Load entities automatically
       synchronize: true, //Always true database schema sync
     }),
+    AuthModule,
   ],
   controllers: [TasksController],
 })
