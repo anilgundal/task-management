@@ -80,6 +80,7 @@ Bu proje, Laravel 12, Vite, Tailwind CSS ve Laravel Breeze kullanılarak gelişt
    php artisan migrate
 7. **Geliştirme Sunucusunu Başlat:**
    ```bash
+   npm run dev
    php artisan serve
 8. **.env Dosyasını Oluştur:**
    ```bash
