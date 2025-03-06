@@ -82,9 +82,6 @@ Bu proje, Laravel 12, Vite, Tailwind CSS ve Laravel Breeze kullanılarak gelişt
    ```bash
    npm run dev
    php artisan serve
-8. **.env Dosyasını Oluştur:**
-   ```bash
-   composer install
 ### Testleri Çalıştırmak (Opsiyonel)
 8. **Projeyi test etmek için aşağıdaki komutu kullanabilirsiniz:**
    ```bash
