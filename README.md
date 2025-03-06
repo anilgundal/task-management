@@ -60,7 +60,7 @@ Bu proje, Laravel 12, Vite, Tailwind CSS ve Laravel Breeze kullanılarak gelişt
 1. **Projeyi Klonla:**
 
    ```bash
-   git clone https://github.com/anilgundal/task-management.git
+   git clone <repository-url>
    cd task-management
 2. **Composer Bağımlılıklarını Yükle:**
 
